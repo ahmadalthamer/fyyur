@@ -8,12 +8,32 @@
 		<li>
 			<a href="/venues/{{ venue.id }}">
 				<i class="fas fa-music"></i>
-				<div class="item">
 					<h5>{{ venue.name }}</h5>
-				</div>
 			</a>
 		</li>
+			<a href="/venues/{{ venue.id }}/edit">
+			&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+			<i class="fas fa-edit  fa-2x" style="color: blue"></i>
+		</a>
+
+		&nbsp&nbsp&nbsp
+<!-- id="delete"  -->
+      	<i onclick="deletedVenue({{ venue.id }})" class="fas fa-trash-alt fa-2x" style="color:
+		red"></i>
+
 		{% endfor %}
 	</ul>
+
 {% endfor %}
+
+ <script>
+ 	function deletedVenue(venueId)
+        {
+        	fetch('/venues/' + venueId, {
+        		method: 'DELETE'
+        	})
+        }     
+ </script>
+
 {% endblock %}
+
